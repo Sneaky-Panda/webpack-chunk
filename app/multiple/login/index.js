@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import * as ReactDOM from "react-dom";
-import "../../../index.css"
+import "../../index.css"
 import "../../component/login/login.css";
 import Login from "../../component/login/Login";
 class App extends Component {

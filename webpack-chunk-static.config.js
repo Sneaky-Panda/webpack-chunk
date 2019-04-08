@@ -5,8 +5,7 @@ const path = require('path');
 
 module.exports = merge(common, {
     entry: {
-        login: path.resolve('./app/multiple/login/index.js'),
-        home: path.resolve('./app/multiple/home/index.js')
+        index: path.resolve('./app/static/index.js')
     },
     optimization: {
         splitChunks: {
@@ -16,33 +15,38 @@ module.exports = merge(common, {
                     chunks: 'all',
                     test: /node_modules/,
                     priority: 10
-                },
-
+                }
             }
         },
     },
     plugins: [
-        new HtmlWebpackPlugin({  // Also generate a test.html
-            filename: 'index.html',
-            template: path.resolve('index.html'),
-            excludeChunks: ['home'],
-            title: "Login"
-        }),
 
-        new HtmlWebpackPlugin({  // Also generate a test.html
-            filename: 'home.html',
+        new HtmlWebpackPlugin({
             template: path.resolve('index.html'),
-            excludeChunks: ['login'],
-            title: "CHUNK"
+            title: 'CHUNKS',
         })
     ]
 });
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // commons: {
-//     name: "common",
+//     name:"common",
 //         chunks: "all",
 //         minChunks: 2,
 //         maxInitialRequests: 5, // The default limit is too small to showcase the effect
-//         minSize: 0
+//         minSize: 0 // This is example is too small to create commons chunks
 // },

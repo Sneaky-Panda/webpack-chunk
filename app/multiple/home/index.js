@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import * as ReactDOM from "react-dom";
-import "../../../index.css"
+import "../../index.css"
 import Home from "../../component/home/Home";
 
 class App extends Component {

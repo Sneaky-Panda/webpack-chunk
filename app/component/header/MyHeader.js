@@ -6,7 +6,7 @@ export default class extends Component {
     constructor(props){
         super(props);
         this.state = {
-            title: props.title || "Ma Application"
+            title: props.title || "Mon Application"
         }
     }
 

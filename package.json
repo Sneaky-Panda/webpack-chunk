@@ -20,18 +20,18 @@
     "url-loader": "^1.1.2",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
-    "webpack-dev-server": "^3.2.1"
+    "webpack-dev-server": "^3.2.1",
+    "webpack-merge": "^4.2.1"
   },
   "scripts": {
-    "start-nochunks": "webpack-dev-server --config webpack-no-chunk.config.js -d --inline --hot ",
-    "start-chunks-multiple": "webpack-dev-server --config webpack-chunk-multiple.config.js -d --inline --hot ",
-    "start-chunks": "webpack-dev-server --config webpack-chunk.config.js -d --inline --hot "
+    "start-no-chunks": "webpack-dev-server --config webpack-no-chunk.config.js",
+    "start-chunks-static": "webpack-dev-server --config webpack-chunk-static.config.js",
+    "start-chunks-multiple": "webpack-dev-server --config webpack-chunk-multiple.config.js",
+    "start-chunks-dynamic": "webpack-dev-server --config webpack-chunk.config.js"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.8.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-materialize": "^3.0.4",
     "react-router-dom": "^5.0.0"
   }
 }
