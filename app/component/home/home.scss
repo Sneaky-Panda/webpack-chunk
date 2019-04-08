@@ -1,0 +1,253 @@
+$particles: 50;
+$width: 500;
+$height: 500;
+
+// Create the explosion...
+$box-shadow: ();
+$box-shadow2: ();
+@for $i from 0 through $particles {
+    $box-shadow: $box-shadow,
+    random($width)-$width / 2 + px
+    random($height)-$height / 1.2 + px
+    hsl(random(360), 100, 50);
+    $box-shadow2: $box-shadow2, 0 0 #fff
+}
+@mixin keyframes ($animationName) {
+    @-webkit-keyframes #{$animationName} {
+    @content;
+}
+
+@-moz-keyframes #{$animationName} {
+@content;
+}
+
+@-o-keyframes #{$animationName} {
+@content;
+}
+
+@-ms-keyframes #{$animationName} {
+@content;
+}
+
+@keyframes #{$animationName} {
+@content;
+}
+}
+
+@mixin animation-delay ($settings) {
+    -moz-animation-delay: $settings;
+    -webkit-animation-delay: $settings;
+    -o-animation-delay: $settings;
+    -ms-animation-delay: $settings;
+    animation-delay: $settings;
+}
+
+@mixin animation-duration ($settings) {
+    -moz-animation-duration: $settings;
+    -webkit-animation-duration: $settings;
+    -o-animation-duration: $settings;
+    -ms-animation-duration: $settings;
+    animation-duration: $settings;
+}
+
+@mixin animation ($settings) {
+    -moz-animation: $settings;
+    -webkit-animation: $settings;
+    -o-animation: $settings;
+    -ms-animation: $settings;
+    animation: $settings;
+}
+
+@mixin transform ($settings) {
+    transform: $settings;
+    -moz-transform: $settings;
+    -webkit-transform: $settings;
+    -o-transform: $settings;
+    -ms-transform: $settings;
+}
+
+
+.pyro > .before, .pyro > .after {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    position:absolute;
+    z-index:20;
+    border-radius: 50%;
+    box-shadow: $box-shadow2;
+@include animation((1s bang ease-out infinite backwards, 1s gravity ease-in infinite backwards, 5s position linear infinite backwards));
+}
+
+.pyro > .after {
+@include animation-delay((1.25s, 1.25s, 1.25s));
+@include animation-duration((1.25s, 1.25s, 6.25s));
+}
+
+@include keyframes(bang) {
+    to {
+        box-shadow:$box-shadow;
+    }
+}
+
+@include keyframes(gravity)  {
+    to {
+    @include transform(translateY(200px));
+        opacity: 0;
+    }
+}
+
+@include keyframes(position) {
+0%, 19.9% {
+    margin-top: 10%;
+    margin-left: 40%;
+}
+20%, 39.9% {
+    margin-top: 40%;
+    margin-left: 30%;
+}
+40%, 59.9% {
+    margin-top: 20%;
+    margin-left: 70%
+}
+60%, 79.9% {
+    margin-top: 30%;
+    margin-left: 20%;
+}
+80%, 99.9% {
+    margin-top: 30%;
+    margin-left: 80%;
+}
+}
+
+.blink_me {
+    background-color: yellow;
+}
+
+.blink_me span {
+    color:white;
+    font-size: 2em;
+    animation: 1s blinker linear infinite backwards;
+}
+
+@keyframes blinker {
+
+    25% {
+        color: blue;
+    }
+    50% {
+        opacity: 0;
+    }
+
+    75% {
+        color: red;
+    }
+}
+
+.morph div img {
+    width: 200px;
+    height: 150px;
+    -webkit-filter: grayscale(0) blur(0px);
+    filter: grayscale(0) blur(0px);
+    z-index:10;
+    position:absolute;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    animation-iteration-count: infinite;
+    animation: pulse 0.5s infinite,5s position linear infinite backwards;
+}
+
+
+@keyframes pulse {
+    0% {
+        width: 200px;
+        height: 150px;
+    }
+    100% {
+        width: 150px; /* on affiche l'image au carré */
+        height: 150px;
+        border-radius: 50%;
+        transform: rotate(360deg);
+    }
+}
+
+.horizontal-move{
+    position:absolute;
+    top:120px;
+    animation: move 3s infinite;
+    z-index:1;
+    width:100px;
+}
+
+@keyframes move {
+    0% {
+        left:0;
+        transform: scale(0.5, 0.5);
+    }
+    49.9%{
+        left:100%;
+        transform: scale(0.5, 0.5);
+    }
+    50%{
+        left:100%;
+        transform: scale(-0.5, 0.5);
+    }
+    99.9%{
+        left:1%;
+        transform: scale(-0.5, 0.5);
+    }
+    100% {
+        left:0;
+    }
+}
+
+.zad-city{
+    position: fixed;
+    color:yellow;
+    font-size: 1.5em;
+    bottom:20px;
+    border : 1px solid yellow;
+    background-color: grey;
+    padding:20px;
+    left:20px;
+    right:20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.zad-city > div:first-child {
+    font-size:2em;
+    text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
+    animation: 1s blinker-zad linear infinite backwards;
+
+}
+
+
+@keyframes blinker-zad {
+
+    25% {
+        text-shadow: 1px 1px 2px blue, 0 0 1em green, 0 0 0.2em red;
+    }
+    50% {
+        text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
+    }
+
+    75% {
+        text-shadow: 1px 1px 2px green, 0 0 1em aliceblue, 0 0 0.2em yellow;
+    }
+}
+
+
+.zad-city > div:last-child {
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    width:100%;
+    flex-wrap: wrap;
+}
+
+.zad-city > div:last-child img {
+    height: 100px;
+    margin-bottom: 5px;
+}
