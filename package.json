@@ -27,7 +27,7 @@
     "start-no-chunks": "webpack-dev-server --config webpack-no-chunk.config.js",
     "start-chunks-static": "webpack-dev-server --config webpack-chunk-static.config.js",
     "start-chunks-multiple": "webpack-dev-server --config webpack-chunk-multiple.config.js",
-    "start-chunks-dynamic": "webpack-dev-server --config webpack-chunk.config.js"
+    "start-chunks-dynamic": "webpack-dev-server --config webpack-chunk-dynamic.config.js"
   },
   "dependencies": {
     "react": "^16.8.6",
